@@ -153,7 +153,7 @@ export default function CartContextProvider({ children }) {
                 removeItemFromCart,
                 increaseItemQty,
                 decreaseItemQty,
-                loading,
+                isLoading,
             }}
         >
             {children}
