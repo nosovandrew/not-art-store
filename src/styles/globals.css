@@ -1,3 +1,37 @@
+:root {
+    /* vars here */
+
+    /* custom colors */
+    --base-ivory: hsla(33, 53%, 93%, 100%);
+    --base-palm: hsla(171, 23%, 56%, 100%);
+    --base-ocean: hsla(225, 27%, 74%, 100%);
+    --base-miami-pink: hsla(331, 27%, 74%, 100%);
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+/* custom components (like styled-components) */
+@layer components {
+    /* inner wrapper for Next.js link component */
+    .link-wrapper {
+        @apply cursor-pointer no-underline text-inherit
+    }
+    .button {
+        @apply cursor-pointer bg-black text-white px-6 py-2
+    }
+}
+
+/* custom classes */
+@layer utilities {
+    /* doesn't work... */
+    .w-inherit {
+        width: inherit;
+    }
+
+    .h-inherit {
+        height: inherit;
+    }
+}
