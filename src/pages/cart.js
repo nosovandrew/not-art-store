@@ -1,4 +1,5 @@
 import { useContext, useState, useEffect } from 'react';
+import { NextSeo } from 'next-seo';
 
 import { CartContext } from '@/context/cart/context';
 import { formatPrice } from '@/utils/formats';
@@ -24,6 +25,10 @@ export default function Cart() {
 
     return (
         <Layout>
+            <NextSeo
+                title='Корзина'
+                description='Страница с товарами, которые выбраны клиентом для покупки. Тут можно увеличить/уменьшить количество товара, а также перейти к оплате.'
+            />
             {/* <h1>Корзина</h1> */}
             {cart.length === 0 ? (
                 <div className='flex justify-center'>
@@ -45,7 +50,7 @@ export default function Cart() {
                             />
                         ))}
                     </div>
-                    <p>Сумма корзины: {formatPrice(cartTotal)}</p>
+                    <p className='text-center'>Сумма корзины: {formatPrice(cartTotal)}</p>
                     <a className='button' href={checkoutUrl}>
                         {isLoading ? <Loading /> : 'Доставка и оплата'}
                     </a>

@@ -1,4 +1,5 @@
 import { useRouter } from 'next/router';
+import { NextSeo } from 'next-seo';
 
 import { getAllSlugs, getProductByHandle } from '@/lib/shopify/product';
 
@@ -14,6 +15,10 @@ export default function StoreItem({ product }) {
 
     return (
         <Layout>
+            <NextSeo
+                title={product.title}
+                description={product.description}
+            />
             <Product product={product} />
         </Layout>
     );
