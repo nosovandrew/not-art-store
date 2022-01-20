@@ -1,41 +1,56 @@
-import { useContext } from 'react';
+import { useContext, useState, useEffect } from 'react';
 
 import { CartContext } from '@/context/cart/context';
 import { formatPrice } from '@/utils/formats';
 
-import QtyManager from '@/components/atoms/qty';
+import Layout from '@/components/templates/layout';
+import CartItem from '@/components/molecules/cartItem';
 import Loading from '@/components/atoms/loading';
 
 export default function Cart() {
     const { cart, checkoutUrl, isLoading } = useContext(CartContext);
+    const [cartTotal, setCartTotal] = useState(0); // cart total state
 
     // calc total price of cart (last arg 0 is init value of first arg in first run of reduce func)
-    const cartTotal = cart.reduce(
-        (total, item) => total + Number(item?.variantPrice),
-        0
-    );
+    const getCartTotal = (cart) => {
+        const total = cart.reduce((total, item) => total + Number(item?.variantPrice * item?.variantQuantity), 0);
+        setCartTotal(total);
+    }
+
+    // recalc cart total when cart was changed
+    useEffect(() => {
+        getCartTotal(cart);
+    }, [cart])
 
     return (
-        <div>
-            <h1>Cart</h1>
-            <span>--------</span>
-            <div>
-                {cart.length === 0 ? (
-                    <p>Корзина пуста</p>
-                ) : (
-                    cart.map((_item, index) => (
-                        <div key={index}>
-                            <h3>{_item.title}</h3>
-                            <p>{_item.variantTitle}</p>
-                            <QtyManager itemId={_item.id} itemQty={_item.variantQuantity} />
-                            {isLoading && <Loading />}
-                            <span>--------</span>
-                        </div>
-                    ))
-                )}
-            </div>
-            Сумма корзины: {formatPrice(cartTotal)}
-            <a href={checkoutUrl}>Перейти к оплате</a>
-        </div>
+        <Layout>
+            {/* <h1>Корзина</h1> */}
+            {cart.length === 0 ? (
+                <div className='flex justify-center'>
+                    <p>Корзина пуста :(</p>
+                </div>
+            ) : (
+                <div className='flex flex-col items-center space-y-6'>
+                    <div className='flex flex-col items-start space-y-4'>
+                        {cart.map((_item, _index) => (
+                            <CartItem
+                                key={_index}
+                                id={_item.id}
+                                imageSrc={_item.imageSrc}
+                                imageAlt={_item.imageAlt}
+                                title={_item.title}
+                                variantTitle={_item.variantTitle}
+                                variantQuantity={_item.variantQuantity}
+                                variantPrice={_item.variantPrice}
+                            />
+                        ))}
+                    </div>
+                    <p>Сумма корзины: {formatPrice(cartTotal)}</p>
+                    <a className='button' href={checkoutUrl}>
+                        {isLoading ? <Loading /> : 'Доставка и оплата'}
+                    </a>
+                </div>
+            )}
+        </Layout>
     );
 }
