@@ -20,7 +20,7 @@
         @apply cursor-pointer no-underline text-inherit
     }
     .button {
-        @apply cursor-pointer bg-black text-white px-6 py-2
+        @apply text-center cursor-pointer bg-black text-white px-6 py-2
     }
 }
 
