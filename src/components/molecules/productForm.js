@@ -1,4 +1,5 @@
 import { useState, useContext, useEffect } from 'react';
+import Link from 'next/link';
 
 import { formatPrice } from '@/utils/formats';
 import { CartContext } from '@/context/cart/context';
@@ -103,6 +104,9 @@ export default function ProductForm({ product }) {
                         itemQty={variantInCart.variantQuantity}
                     />
                     {isLoading && <Loading />}
+                    <div className='mt-2'>
+                        <Link href='/cart'>Перейти</Link>
+                    </div>
                 </div>
             ) : (
                 <button
