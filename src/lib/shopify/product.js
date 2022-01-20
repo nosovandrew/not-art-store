@@ -24,6 +24,10 @@ export async function getProductByHandle(handle) {
                     node {
                         id
                         title
+                        image {
+                            url
+                            altText
+                        }
                         priceV2 {
                             amount
                         }
@@ -31,9 +35,11 @@ export async function getProductByHandle(handle) {
                             name
                             value
                         }
+                        quantityAvailable
                     }
                 }
             }
+            availableForSale
         }
     }`;
 
@@ -64,6 +70,7 @@ export async function getProductList() {
                             }   
                         }
                     }
+                    availableForSale
                 }
             }
         }
