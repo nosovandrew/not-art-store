@@ -6,7 +6,7 @@ export default function ImageRenderer({ src, alt, ...props }) {
 
     return (
         <>
-            {!isLoaded && <div className='absolute bg-gray-300 rounded-sm'></div>}
+            {!isLoaded && <div className='absolute w-inherit h-inherit bg-gray-300 rounded-sm'></div>}
             <Image
                 onLoadingComplete={() => setIsLoaded(true)} // runs when next/image is loaded
                 src={src}
