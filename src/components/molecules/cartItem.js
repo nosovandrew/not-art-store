@@ -14,13 +14,13 @@ export default function CartItem({
 }) {
     return (
         <div className='p-4 w-full flex items-start space-x-8 border-black border-2'>
-            <div className='drop-shadow-pixel'>
+            <div>
                 <ImageRenderer
                     src={imageSrc}
                     alt={imageAlt}
                     layot='fixed'
-                    width={80}
-                    height={80}
+                    width={100}
+                    height={100}
                 />
             </div>
             <div className='flex flex-col items-start justify-start space-y-2'>
