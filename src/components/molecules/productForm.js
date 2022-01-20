@@ -6,6 +6,7 @@ import { CartContext } from '@/context/cart/context';
 import QtyManager from '@/components/atoms/qty';
 import Options from '@/components/atoms/options';
 import Loading from '@/components/atoms/loading';
+import SizeGuide from '../atoms/sizeGuide';
 
 export default function ProductForm({ product }) {
     const { title, handle, variants, options } = product; // parse product object
@@ -24,6 +25,8 @@ export default function ProductForm({ product }) {
         // return all needed info for variant (product essence)
         return {
             id: _variant.node.id, // instead of global product ID
+            imageSrc: _variant.node.image.url,
+            imageAlt: _variant.node.image.altText,
             title: title,
             handle: handle,
             options: variantOptions, // our options {name: value}
@@ -42,7 +45,7 @@ export default function ProductForm({ product }) {
     // check added to cart variant
     useEffect(() => {
         // check if selected product variant is already added to cart (return array obj)
-        const foundItem = cart.find(_item => _item.id === selectedVariant.id)
+        const foundItem = cart.find((_item) => _item.id === selectedVariant.id);
 
         // set found item or null
         if (foundItem) {
@@ -74,9 +77,12 @@ export default function ProductForm({ product }) {
     };
 
     return (
-        <div>
-            <h1>{title}</h1>
-            <span>{formatPrice(selectedVariant.variantPrice)}</span>
+        <div className='flex flex-col items-center space-y-6 m-4'>
+            <div className='text-center'>
+                <h1 className='mb-2'>{title}</h1>
+                <p>{formatPrice(selectedVariant.variantPrice)}</p>
+            </div>
+            <SizeGuide />
             {
                 // render all avaiable options for this global product
                 options.map(({ name, values }, _index) => (
@@ -89,20 +95,25 @@ export default function ProductForm({ product }) {
                     />
                 ))
             }
-            <span>View size guide</span>
-            <button
-                onClick={() => {
-                    addItemToCart(selectedVariant);
-                }}
-            >
-                Add To Cart
-            </button>
-            {variantInCart && (
-                <QtyManager itemId={selectedVariant.id} itemQty={variantInCart.variantQuantity} />
+            {variantInCart ? (
+                <div className='flex flex-col items-center'>
+                    <p className='mb-2'>В корзине</p>
+                    <QtyManager
+                        itemId={selectedVariant.id}
+                        itemQty={variantInCart.variantQuantity}
+                    />
+                    {isLoading && <Loading />}
+                </div>
+            ) : (
+                <button
+                    className='button'
+                    onClick={() => {
+                        addItemToCart(selectedVariant);
+                    }}
+                >
+                    В корзину
+                </button>
             )}
-            <br />
-            <br />
-            {isLoading && <Loading />}
         </div>
     );
 }
