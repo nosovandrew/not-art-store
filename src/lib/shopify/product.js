@@ -7,6 +7,7 @@ export async function getProductByHandle(handle) {
             id
             handle
             title
+            description
             images(first: 5) {
                 edges {
                     node {

@@ -6,7 +6,7 @@ export default function Product({ product }) {
 
     return (
         <div className='w-full flex flex-col items-center'>
-            <div className='w-[250px] h-[250px] lg:w-[400px] lg:h-[400px] m-4 drop-shadow-pixel'>
+            <div className='w-[250px] h-[250px] lg:w-[400px] lg:h-[400px] m-4'>
                 <ImageRenderer
                     src={product.images.edges[0].node.url}
                     alt={product.images.edges[0].node.altText}

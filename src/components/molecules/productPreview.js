@@ -7,7 +7,7 @@ export default function ProductPreview({ itemPath, imageSrc, imageAlt, title, pr
         <Link href={itemPath} passHref>
             <a className='link-wrapper'>
                 <div className='flex flex-col items-center p-4 cursor-pointer space-y-4'>
-                    <div className='w-[250px] h-[250px] m-4 drop-shadow-pixel'>
+                    <div className='w-[250px] h-[250px] m-4'>
                         <ImageRenderer
                             src={imageSrc}
                             alt={imageAlt}
