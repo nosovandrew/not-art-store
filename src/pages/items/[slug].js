@@ -3,6 +3,7 @@ import { useRouter } from 'next/router';
 import { getAllSlugs, getProductByHandle } from '@/lib/shopify/product';
 
 import Product from '@/components/organisms/product';
+import Layout from '@/components/templates/layout';
 
 export default function StoreItem({ product }) {
     const router = useRouter();
@@ -11,7 +12,11 @@ export default function StoreItem({ product }) {
         return <div>Loading...</div>;
     }
 
-    return <Product product={product} />;
+    return (
+        <Layout>
+            <Product product={product} />
+        </Layout>
+    );
 }
 
 export async function getStaticPaths() {
