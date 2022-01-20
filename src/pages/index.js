@@ -1,32 +1,26 @@
-import Image from 'next/image';
-import Link from 'next/link';
-
 import { formatPrice } from '@/utils/formats';
 import { getProductList } from '@/lib/shopify/product';
 
+import Layout from '@/components/templates/layout';
+import ProductPreview from '@/components/molecules/productPreview';
+
 export default function Main({ products }) {
     return (
-        <>
-            <h1>Hello E-commerce world!</h1>
-            <ul>
+        <Layout>
+            <div className='grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-16 justify-items-center'>
                 {products.map((_product, _index) => (
-                    <li key={_index}>
-                        <Link href={`/items/${_product.node.handle}`} passHref>
-                            <a>
-                                <Image
-                                    src={_product.node.images.edges[0].node.url}
-                                    alt={_product.node.images.edges[0].node.altText}
-                                    width={200}
-                                    height={200}
-                                />
-                                <h2>{_product.node.title}</h2>
-                                <span>{formatPrice(_product.node.priceRange.minVariantPrice.amount)}</span>
-                            </a>
-                        </Link>
-                    </li>
+                    <ProductPreview
+                        key={_index}
+                        itemPath={`/items/${_product.node.handle}`}
+                        imageSrc={_product.node.images.edges[0].node.url}
+                        imageAlt={_product.node.images.edges[0].node.altText}
+                        title={_product.node.title}
+                        price={formatPrice(_product.node.priceRange.minVariantPrice.amount)}
+                        availableForSale={_product.node.availableForSale}
+                    />
                 ))}
-            </ul>
-        </>
+            </div>
+        </Layout>
     );
 }
 
