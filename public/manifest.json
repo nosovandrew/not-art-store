@@ -1,0 +1,32 @@
+{
+    "lang": "ru",
+    "dir": "ltr",
+    "name": "Not Art Store",
+    "short_name": "NAS",
+    "description": "Not Art Store — это магазин пиксельной графики. Проект является демонстрацией совместной работы Shopify (сервис для e-commerce проектов) и Next.js (React-фреймворк для разработки web-приложений). Такая связка дает нам готовый и стабильный backend, а также безграничные возможности для дизайна и frontend-разработки. Демо разработано в Носов Студии (webnos).",
+    "display": "standalone",
+    "start_url": "/",
+    "theme_color": "#F7EFE5",
+    "background_color": "#F7EFE5",
+    "orientation": "portrait",
+    "icons": [
+        {
+            "src": "icons/maskable_icon-192.png",
+            "type": "image/png",
+            "purpose": "maskable",
+            "sizes": "192x192"
+        },
+        {
+            "src": "icons/icon-192.png",
+            "type": "image/png",
+            "purpose": "any",
+            "sizes": "192x192"
+        },
+        {
+            "src": "icons/icon-512.png",
+            "type": "image/png",
+            "purpose": "any",
+            "sizes": "512x512"
+        }
+    ]
+} 
