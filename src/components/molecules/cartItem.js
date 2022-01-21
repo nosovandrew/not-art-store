@@ -13,7 +13,7 @@ export default function CartItem({
     variantPrice,
 }) {
     return (
-        <div className='p-4 w-full flex items-start space-x-8 border-black border-2'>
+        <div className='py-4 px-6 w-full flex items-center space-x-8 border-black border-2'>
             <div>
                 <ImageRenderer
                     src={imageSrc}

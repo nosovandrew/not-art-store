@@ -97,14 +97,14 @@ export default function ProductForm({ product }) {
                 ))
             }
             {variantInCart ? (
-                <div className='flex flex-col items-center'>
-                    <p className='mb-2'>В корзине</p>
+                <div className='p-4 w-full flex flex-col items-center space-y-4 border-black border-2'>
+                    <p>В корзине</p>
                     <QtyManager
                         itemId={selectedVariant.id}
                         itemQty={variantInCart.variantQuantity}
                     />
                     {isLoading && <Loading />}
-                    <div className='mt-2'>
+                    <div className=' py-2'>
                         <Link href='/cart'>Перейти</Link>
                     </div>
                 </div>

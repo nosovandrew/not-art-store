@@ -15,7 +15,7 @@ export default function SizeGuide() {
                         <li>M — 50x50см</li>
                         <li>L — 75x75см</li>
                     </ul>
-                    <button className='mt-2 px-4 py-2' onClick={() => setIsOpen(false)}>Закрыть</button>
+                    <button className='mt-4 pt-2 pb-6' onClick={() => setIsOpen(false)}>Закрыть</button>
                 </>
             )}
         </div>

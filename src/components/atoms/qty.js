@@ -7,15 +7,15 @@ export default function QtyManager({ itemId, itemQty }) {
     const { increaseItemQty, decreaseItemQty, removeItemFromCart, isLoading } = useContext(CartContext);
 
     return (
-        <div className='flex space-x-4'>
+        <div className='flex items-center space-x-4'>
             {itemQty > 1 && (
-                <button onClick={() => decreaseItemQty(itemId)} disabled={isLoading ? true : false}>-</button>
+                <button className='square-button' onClick={() => decreaseItemQty(itemId)} disabled={isLoading ? true : false}>-</button>
             )}
             {itemQty === 1 && (
-                <button onClick={() => removeItemFromCart(itemId)} disabled={isLoading ? true : false}>x</button>
+                <button className='square-button' onClick={() => removeItemFromCart(itemId)} disabled={isLoading ? true : false}>x</button>
             )}
             <p>{itemQty}</p>
-            <button onClick={() => increaseItemQty(itemId)} disabled={isLoading ? true : false}>+</button>
+            <button className='square-button' onClick={() => increaseItemQty(itemId)} disabled={isLoading ? true : false}>+</button>
         </div>
     );
 }

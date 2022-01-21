@@ -35,7 +35,7 @@ export default function Cart() {
                     <p>Корзина пуста :(</p>
                 </div>
             ) : (
-                <div className='flex flex-col items-center space-y-6'>
+                <div className='w-full flex flex-col items-center space-y-6'>
                     <div className='flex flex-col items-start space-y-4'>
                         {cart.map((_item, _index) => (
                             <CartItem

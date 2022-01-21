@@ -22,11 +22,13 @@
     .button {
         @apply text-center cursor-pointer bg-black text-white px-6 py-2
     }
+    .square-button {
+        @apply text-center cursor-pointer bg-black text-white py-1 px-3
+    }
 }
 
 /* custom classes */
 @layer utilities {
-    /* doesn't work... */
     .w-inherit {
         width: inherit;
     }
